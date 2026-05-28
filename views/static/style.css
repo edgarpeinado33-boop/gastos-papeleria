@@ -35,7 +35,6 @@ body {
     position: relative;
     overflow-x: hidden;
 
-    /* Base oscura del espacio */
     background-color: #020408;
     background-image:
         radial-gradient(ellipse 80% 60% at 15% 40%,
@@ -930,6 +929,30 @@ canvas {
 }
 
 /* ============================================
+   CAJA DE DEPURACIÓN - PRUEBA
+   ============================================ */
+.debug-box {
+    background: #ff0000;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    margin: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: monospace;
+    z-index: 9999;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .debug-box {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+
+/* ============================================
    MEJORAS PARA CELULARES - FORZAR VISIBILIDAD
    ============================================ */
 @media (max-width: 768px) {
@@ -946,7 +969,6 @@ canvas {
         font-size: 1rem; 
     }
     
-    /* FORZAR VISIBILIDAD DE LOS VALORES */
     .stat-value {
         font-size: 28px !important;
         font-weight: bold !important;
