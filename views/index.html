@@ -10,13 +10,19 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+
+    <div class="galaxy-layer"></div>
+    <div class="waves-container">
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
     <div class="container">
         <div class="page-header">
             <h1><i class="fas fa-receipt"></i> Control de Gastos</h1>
             <p class="lead">Sistema de Caja Chica - Papelería</p>
         </div>
 
-        <!-- Mostrar mensaje de éxito desde la URL (sin flash, sin SECRET_KEY) -->
         {% if mensaje_exito %}
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <i class="fas fa-check-circle"></i> {{ mensaje_exito }}
@@ -24,7 +30,6 @@
             </div>
         {% endif %}
 
-        <!-- Alertas de presupuesto (Patrón Observer) -->
         {% if alertas %}
             <div class="alerts-container">
                 {% for alerta in alertas %}
@@ -36,7 +41,6 @@
             </div>
         {% endif %}
 
-        <!-- Tarjetas de estadísticas -->
         <div class="stats-grid">
             <div class="stat-card stat-card-primary">
                 <div class="stat-content">
@@ -58,14 +62,12 @@
             </div>
         </div>
 
-        <!-- Barra de progreso -->
         <div class="progress">
             <div class="progress-bar bg-success" id="progressBar" data-porcentaje="{{ porcentaje }}">
                 <span id="progressText"></span>
             </div>
         </div>
 
-        <!-- Botones de acción -->
         <div class="btn-group">
             <a href="/gasto/nuevo" class="btn btn-success">
                 <i class="fas fa-plus-circle"></i> Nuevo Gasto
@@ -75,7 +77,6 @@
             </a>
         </div>
 
-        <!-- Tabla de últimos gastos -->
         <div class="card">
             <div class="card-header">
                 <i class="fas fa-history"></i> Últimos Gastos Registrados
@@ -117,18 +118,15 @@
     </div>
 
     <script>
-        // Configurar la barra de progreso
         (function() {
             const progressBar = document.getElementById('progressBar');
             if (progressBar) {
                 const porcentaje = parseFloat(progressBar.getAttribute('data-porcentaje')) || 0;
                 progressBar.style.width = porcentaje + '%';
-                
                 const textSpan = document.getElementById('progressText');
                 if (textSpan && porcentaje > 10) {
                     textSpan.textContent = porcentaje.toFixed(1) + '%';
                 }
-                
                 if (porcentaje > 80) {
                     progressBar.classList.remove('bg-success');
                     progressBar.classList.add('bg-danger');
@@ -138,8 +136,7 @@
                 }
             }
         })();
-        
-        // Auto-cerrar alertas después de 5 segundos
+
         setTimeout(function() {
             const alerts = document.querySelectorAll('.alert');
             alerts.forEach(function(alert) {
@@ -152,9 +149,4 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-<!-- Ondas de fondo 3D -->
-<div class="waves-container">
-    <div class="wave"></div>
-    <div class="wave"></div>
-</div>
 </html>
