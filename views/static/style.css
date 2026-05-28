@@ -25,16 +25,19 @@
     box-sizing: border-box;
 }
 
+/* ============================================
+   FONDO 3D ANIMADO CON MOVIMIENTO
+   ============================================ */
 body {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
     padding: 1rem;
     position: relative;
     overflow-x: hidden;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
 }
 
-/* Partículas de fondo animadas */
+/* Fondo animado con ondas 3D */
 body::before {
     content: '';
     position: fixed;
@@ -42,14 +45,96 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(255,255,255,0.04) 0%, transparent 50%);
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(102, 126, 234, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(118, 75, 162, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 40% 80%, rgba(66, 153, 225, 0.1) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
+    animation: pulseBg 8s ease-in-out infinite;
 }
 
+/* Partículas flotantes */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(3px 3px at 30% 50%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 80%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(2px 2px at 85% 30%, rgba(255,255,255,0.25) 0%, transparent 100%),
+        radial-gradient(3px 3px at 45% 90%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 95% 65%, rgba(255,255,255,0.35) 0%, transparent 100%),
+        radial-gradient(2px 2px at 15% 75%, rgba(255,255,255,0.3) 0%, transparent 100%);
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 0;
+    animation: floatParticles 20s linear infinite;
+}
+
+/* Animación de partículas flotantes */
+@keyframes floatParticles {
+    0% {
+        background-position: 
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%;
+    }
+    100% {
+        background-position: 
+            100% 100%,
+            80% 90%,
+            120% 70%,
+            90% 110%,
+            70% 80%,
+            110% 95%,
+            60% 85%;
+    }
+}
+
+/* Animación de pulsación del fondo */
+@keyframes pulseBg {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* Efecto de ondas 3D adicionales */
+.wave-bg {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.wave-bg svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+    animation: waveMove 15s ease-in-out infinite;
+}
+
+@keyframes waveMove {
+    0% { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(-5%) translateY(-2%); }
+    100% { transform: translateX(0) translateY(0); }
+}
+
+/* Gradiente animado en el fondo */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -86,8 +171,14 @@ body::before {
     100% { left: 100%; }
 }
 
+@keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(102,126,234,0.3); }
+    50% { box-shadow: 0 0 20px rgba(102,126,234,0.6); }
+    100% { box-shadow: 0 0 5px rgba(102,126,234,0.3); }
+}
+
 /* ============================================
-   HEADER
+   HEADER CON EFECTO GLOW
    ============================================ */
 .page-header {
     text-align: center;
@@ -98,8 +189,9 @@ body::before {
 .page-header h1 {
     font-size: 1.5rem;
     color: white;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    text-shadow: 0 0 10px rgba(102,126,234,0.5), 2px 2px 4px rgba(0,0,0,0.2);
     margin-bottom: 0.5rem;
+    animation: glow 3s ease-in-out infinite;
 }
 
 @media (min-width: 768px) {
@@ -121,21 +213,24 @@ body::before {
 }
 
 /* ============================================
-   CARDS CON EFECTO 3D
+   CARDS CON EFECTO 3D Y GLASSMORPHISM
    ============================================ */
 .card {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
     margin-bottom: 1rem;
     overflow: hidden;
     transition: var(--transition);
     position: relative;
+    border: 1px solid rgba(255,255,255,0.2);
 }
 
 .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px) scale(1.01);
     box-shadow: var(--shadow-xl);
+    background: rgba(255, 255, 255, 0.98);
 }
 
 .card-header {
@@ -154,7 +249,7 @@ body::before {
     left: -60%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(115deg, rgba(255,255,255,0) 10%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 90%);
+    background: linear-gradient(115deg, rgba(255,255,255,0) 10%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 90%);
     transform: rotate(25deg);
     transition: transform 0.6s ease;
 }
@@ -168,7 +263,7 @@ body::before {
 }
 
 /* ============================================
-   TARJETAS DE ESTADÍSTICAS
+   TARJETAS DE ESTADÍSTICAS 3D
    ============================================ */
 .stats-grid {
     display: grid;
@@ -192,13 +287,15 @@ body::before {
 }
 
 .stat-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow-sm);
     transition: var(--transition);
     cursor: pointer;
     position: relative;
+    border: 1px solid rgba(255,255,255,0.3);
 }
 
 .stat-card::before {
@@ -218,8 +315,9 @@ body::before {
 }
 
 .stat-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) rotateX(5deg);
     box-shadow: var(--shadow-xl);
+    background: white;
 }
 
 .stat-card-primary { border-left: 4px solid var(--primary); }
@@ -274,7 +372,7 @@ body::before {
 }
 
 /* ============================================
-   BOTONES
+   BOTONES 3D
    ============================================ */
 .btn {
     display: inline-flex;
@@ -293,6 +391,7 @@ body::before {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .btn::before {
@@ -303,7 +402,7 @@ body::before {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.4);
     transform: translate(-50%, -50%);
     transition: width 0.5s, height 0.5s;
     z-index: -1;
@@ -316,7 +415,7 @@ body::before {
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
 .btn:active {
@@ -351,14 +450,16 @@ body::before {
 .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; }
 
 /* ============================================
-   BARRA DE PROGRESO
+   BARRA DE PROGRESO CON EFECTO 3D
    ============================================ */
 .progress {
-    background: #e2e8f0;
+    background: rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
     border-radius: 9999px;
     height: 1.5rem;
     overflow: hidden;
     margin: 1.5rem 0;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
 }
 
 @media (min-width: 768px) {
@@ -377,6 +478,7 @@ body::before {
     transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .progress-bar::after {
@@ -418,7 +520,7 @@ body::before {
 .table tbody tr:nth-child(5) { animation-delay: 0.25s; }
 
 .table tbody tr:hover {
-    background: linear-gradient(90deg, rgba(102,126,234,0.05), rgba(118,75,162,0.05));
+    background: linear-gradient(90deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1));
     transform: scale(1.01);
     transition: var(--transition);
 }
@@ -435,28 +537,44 @@ body::before {
     }
     
     .table tr {
-        border: 1px solid #e2e8f0;
+        border: 1px solid rgba(0,0,0,0.1);
         border-radius: var(--radius);
         margin-bottom: 1rem;
         background: white;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
     
     .table td {
         border: none;
         border-bottom: 1px solid #edf2f7;
-        padding-left: 50%;
+        padding: 12px 10px;
         text-align: right;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        font-size: 14px;
     }
     
     .table td:before {
         content: attr(data-label);
         width: 45%;
-        font-weight: 600;
+        font-size: 13px;
+        font-weight: 700;
         color: var(--dark);
         text-align: left;
+    }
+    
+    .table td:last-child {
+        border-bottom: none;
+    }
+    
+    .table td strong {
+        font-size: 15px;
+    }
+    
+    .badge {
+        font-size: 12px;
+        padding: 4px 10px;
     }
 }
 
@@ -484,7 +602,7 @@ body::before {
 }
 
 /* ============================================
-   FORMULARIOS
+   FORMULARIOS CON EFECTO GLASS
    ============================================ */
 .form-container {
     max-width: 100%;
@@ -549,7 +667,7 @@ body::before {
 }
 
 /* ============================================
-   ALERTAS
+   ALERTAS CON EFECTO GLASS
    ============================================ */
 .alerts-container {
     margin-bottom: 1rem;
@@ -563,6 +681,7 @@ body::before {
     align-items: center;
     justify-content: space-between;
     animation: slideInRight 0.4s ease-out;
+    backdrop-filter: blur(5px);
 }
 
 .alert-warning {
@@ -620,10 +739,12 @@ body::before {
     gap: 0.75rem;
     margin-bottom: 1.5rem;
     padding: 1rem;
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
     border-radius: var(--radius);
     animation: fadeInUp 0.5s ease-out;
     box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(255,255,255,0.3);
 }
 
 @media (min-width: 640px) {
@@ -657,7 +778,7 @@ body::before {
 }
 
 /* ============================================
-   GRÁFICO 3D
+   GRÁFICO 3D CON EFECTO GLOW
    ============================================ */
 .chart-container {
     position: relative;
@@ -666,7 +787,8 @@ body::before {
     background: linear-gradient(145deg, #f8f9fa, #e9ecef);
     border-radius: 20px;
     padding: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: glow 4s ease-in-out infinite;
 }
 
 canvas {
@@ -691,7 +813,7 @@ canvas:hover {
 }
 
 /* ============================================
-   SCROLLBAR PERSONALIZADA
+   SCROLLBAR PERSONALIZADA 3D
    ============================================ */
 ::-webkit-scrollbar {
     width: 8px;
@@ -699,7 +821,7 @@ canvas:hover {
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: rgba(0,0,0,0.1);
     border-radius: 10px;
 }
 
@@ -713,20 +835,100 @@ canvas:hover {
 }
 
 /* ============================================
-   MEJORAS PARA MÓVILES
+   MEJORAS PARA CELULARES
    ============================================ */
-@media (max-width: 767px) {
-    select, input, textarea {
+@media (max-width: 768px) {
+    body {
         font-size: 16px;
+        padding: 12px;
+    }
+    
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .page-header .lead {
+        font-size: 1rem;
+    }
+    
+    .stat-title {
+        font-size: 14px;
     }
     
     .stat-value {
-        font-size: 1.25rem;
+        font-size: 1.8rem;
+    }
+    
+    .btn {
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+    
+    .alert {
+        font-size: 14px;
+        padding: 12px;
+    }
+    
+    .form-label {
+        font-size: 14px;
+    }
+    
+    .form-control, .form-select {
+        font-size: 16px;
+        padding: 10px;
+    }
+    
+    .form-text {
+        font-size: 12px;
+    }
+    
+    .filter-group label {
+        font-size: 13px;
+    }
+    
+    .form-select {
+        font-size: 14px;
     }
     
     .chart-container {
-        min-height: 280px;
-        padding: 10px;
+        min-height: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+        padding: 8px;
+    }
+    
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .page-header .lead {
+        font-size: 0.9rem;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+    }
+    
+    .stat-title {
+        font-size: 12px;
+    }
+    
+    .btn {
+        font-size: 15px;
+        padding: 10px 16px;
+    }
+    
+    .card-header {
+        font-size: 1rem;
+        padding: 12px 15px;
+    }
+    
+    .card-body {
+        padding: 15px;
     }
 }
 
@@ -745,4 +947,41 @@ body {
 /* Efecto pulse para tarjeta de peligro */
 .stat-card-danger .stat-value {
     animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ============================================
+   ONDAS DE FONDO 3D (SVG DINÁMICO)
+   ============================================ */
+.waves-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(102,126,234,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') repeat-x;
+    background-size: cover;
+    opacity: 0.3;
+    animation: waveMove 20s linear infinite;
+}
+
+.wave:nth-child(2) {
+    bottom: 0;
+    opacity: 0.2;
+    animation: waveMove 15s linear infinite reverse;
+}
+
+@keyframes waveMove {
+    0% { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(-50%) translateY(-5%); }
 }
