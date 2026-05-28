@@ -146,6 +146,14 @@
                 }, 300);
             });
         }, 5000);
+
+        // Ocultar efectos pesados en móviles para mejorar rendimiento
+        if (window.innerWidth <= 768) {
+            const galaxyLayer = document.querySelector('.galaxy-layer');
+            const wavesContainer = document.querySelector('.waves-container');
+            if (galaxyLayer) galaxyLayer.style.display = 'none';
+            if (wavesContainer) wavesContainer.style.display = 'none';
+        }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
