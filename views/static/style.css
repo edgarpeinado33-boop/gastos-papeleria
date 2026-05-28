@@ -975,8 +975,8 @@ canvas {
         color: #2d3748 !important;
         background: none !important;
         -webkit-background-clip: unset !important;
+        background-clip: unset !important;
         -webkit-text-fill-color: #2d3748 !important;
-        text-fill-color: #2d3748 !important;
         display: block !important;
         text-align: center !important;
         margin-top: 5px !important;
