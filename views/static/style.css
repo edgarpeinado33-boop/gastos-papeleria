@@ -26,7 +26,7 @@
 }
 
 /* ============================================
-   FONDO GALAXIA HD
+   FONDO GALAXIA HD — CSS PURO
    ============================================ */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -34,6 +34,7 @@ body {
     padding: 1rem;
     position: relative;
     overflow-x: hidden;
+
     background-color: #020408;
     background-image:
         radial-gradient(ellipse 80% 60% at 15% 40%,
@@ -55,6 +56,7 @@ body {
         radial-gradient(ellipse 30% 20% at 50% 50%,
             rgba(255, 180, 60, 0.12) 0%,
             transparent 60%);
+
     animation: fadeIn 1s ease-out;
 }
 
@@ -72,11 +74,163 @@ body {
     100% { background-position: 0% 50%; }
 }
 
+/* ============================================
+   CAPA 1 — ESTRELLAS LEJANAS (solo desktop)
+   ============================================ */
+@media (min-width: 769px) {
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image:
+            radial-gradient(1px 1px at 5%   8%,  rgba(255,255,255,0.9) 0%, transparent 100%),
+            radial-gradient(1px 1px at 12%  22%, rgba(255,255,255,0.7) 0%, transparent 100%),
+            radial-gradient(1px 1px at 18%  65%, rgba(255,255,255,0.8) 0%, transparent 100%),
+            radial-gradient(1px 1px at 25%  38%, rgba(200,210,255,0.9) 0%, transparent 100%),
+            radial-gradient(1px 1px at 30%  80%, rgba(255,255,255,0.6) 0%, transparent 100%),
+            radial-gradient(1px 1px at 38%  14%, rgba(255,255,255,0.8) 0%, transparent 100%),
+            radial-gradient(1px 1px at 44%  55%, rgba(200,220,255,0.7) 0%, transparent 100%),
+            radial-gradient(1px 1px at 50%  30%, rgba(255,255,255,0.9) 0%, transparent 100%),
+            radial-gradient(1px 1px at 55%  72%, rgba(255,255,255,0.6) 0%, transparent 100%),
+            radial-gradient(1px 1px at 62%  18%, rgba(220,210,255,0.8) 0%, transparent 100%),
+            radial-gradient(1px 1px at 68%  48%, rgba(255,255,255,0.7) 0%, transparent 100%),
+            radial-gradient(1px 1px at 74%  88%, rgba(255,255,255,0.9) 0%, transparent 100%),
+            radial-gradient(1px 1px at 80%  33%, rgba(200,230,255,0.8) 0%, transparent 100%),
+            radial-gradient(1px 1px at 87%  62%, rgba(255,255,255,0.6) 0%, transparent 100%),
+            radial-gradient(1px 1px at 92%  10%, rgba(255,255,255,0.9) 0%, transparent 100%),
+            radial-gradient(1px 1px at 97%  45%, rgba(220,210,255,0.7) 0%, transparent 100%),
+            radial-gradient(1px 1px at 8%   90%, rgba(255,255,255,0.8) 0%, transparent 100%),
+            radial-gradient(1px 1px at 15%  50%, rgba(255,255,255,0.6) 0%, transparent 100%),
+            radial-gradient(1px 1px at 22%  3%,  rgba(200,220,255,0.9) 0%, transparent 100%),
+            radial-gradient(1px 1px at 35%  95%, rgba(255,255,255,0.7) 0%, transparent 100%),
+            radial-gradient(1px 1px at 47%  77%, rgba(255,255,255,0.8) 0%, transparent 100%),
+            radial-gradient(1px 1px at 58%  42%, rgba(220,200,255,0.7) 0%, transparent 100%),
+            radial-gradient(1px 1px at 72%  7%,  rgba(255,255,255,0.9) 0%, transparent 100%),
+            radial-gradient(1px 1px at 83%  83%, rgba(200,230,255,0.6) 0%, transparent 100%),
+            radial-gradient(1px 1px at 95%  28%, rgba(255,255,255,0.8) 0%, transparent 100%),
+            radial-gradient(1px 1px at 3%   55%, rgba(255,255,255,0.7) 0%, transparent 100%),
+            radial-gradient(1px 1px at 42%  92%, rgba(220,210,255,0.8) 0%, transparent 100%),
+            radial-gradient(1px 1px at 65%  60%, rgba(255,255,255,0.6) 0%, transparent 100%),
+            radial-gradient(1px 1px at 78%  25%, rgba(200,220,255,0.9) 0%, transparent 100%),
+            radial-gradient(1px 1px at 90%  70%, rgba(255,255,255,0.7) 0%, transparent 100%);
+        background-repeat: no-repeat;
+        pointer-events: none;
+        z-index: 0;
+        animation: twinkle1 6s ease-in-out infinite alternate;
+    }
+
+    body::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image:
+            radial-gradient(2px 2px at 7%   17%, rgba(180,210,255,1)   0%, transparent 100%),
+            radial-gradient(2px 2px at 19%  73%, rgba(255,255,255,0.95) 0%, transparent 100%),
+            radial-gradient(2px 2px at 33%  42%, rgba(200,180,255,1)   0%, transparent 100%),
+            radial-gradient(2px 2px at 48%  88%, rgba(255,255,255,0.9) 0%, transparent 100%),
+            radial-gradient(2px 2px at 60%  25%, rgba(180,220,255,1)   0%, transparent 100%),
+            radial-gradient(2px 2px at 76%  58%, rgba(255,255,255,0.95) 0%, transparent 100%),
+            radial-gradient(2px 2px at 89%  15%, rgba(200,180,255,1)   0%, transparent 100%),
+            radial-gradient(2px 2px at 94%  80%, rgba(180,210,255,0.9) 0%, transparent 100%),
+            radial-gradient(2px 2px at 28%  10%, rgba(255,255,255,1)   0%, transparent 100%),
+            radial-gradient(2px 2px at 55%  50%, rgba(200,220,255,0.95) 0%, transparent 100%),
+            radial-gradient(2px 2px at 71%  35%, rgba(255,200,220,0.9) 0%, transparent 100%),
+            radial-gradient(2px 2px at 85%  92%, rgba(180,230,255,1)   0%, transparent 100%),
+            radial-gradient(3px 3px at 22%  60%, rgba(255,255,255,1)   0%, rgba(200,220,255,0.3) 60%, transparent 100%),
+            radial-gradient(3px 3px at 66%  12%, rgba(255,255,255,1)   0%, rgba(180,200,255,0.3) 60%, transparent 100%),
+            radial-gradient(3px 3px at 45%  40%, rgba(220,210,255,1)   0%, rgba(180,160,255,0.3) 60%, transparent 100%),
+            radial-gradient(3px 3px at 80%  70%, rgba(255,240,200,1)   0%, rgba(255,200,100,0.2) 60%, transparent 100%),
+            radial-gradient(3px 3px at 10%  85%, rgba(255,255,255,1)   0%, rgba(200,230,255,0.3) 60%, transparent 100%);
+        background-repeat: no-repeat;
+        pointer-events: none;
+        z-index: 0;
+        animation: twinkle2 8s ease-in-out infinite alternate;
+    }
+}
+
 /* Fondo simplificado para móviles */
 @media (max-width: 768px) {
     body {
         background: linear-gradient(135deg, #0a0a2a 0%, #1a1a3e 100%);
     }
+}
+
+@keyframes twinkle1 {
+    0%   { opacity: 0.6; transform: scale(1); }
+    30%  { opacity: 1;   transform: scale(1.02); }
+    60%  { opacity: 0.7; transform: scale(0.99); }
+    100% { opacity: 0.9; transform: scale(1.01); }
+}
+
+@keyframes twinkle2 {
+    0%   { opacity: 0.8; transform: scale(1); }
+    40%  { opacity: 0.5; transform: scale(1.01); }
+    70%  { opacity: 1;   transform: scale(1.02); }
+    100% { opacity: 0.7; transform: scale(1); }
+}
+
+/* ============================================
+   CAPA 3 — VÍA LÁCTEA (solo desktop)
+   ============================================ */
+@media (min-width: 769px) {
+    .galaxy-layer {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    .galaxy-layer::before {
+        content: '';
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        top: -50%;
+        left: -50%;
+        background:
+            linear-gradient(125deg,
+                transparent 25%,
+                rgba(120, 80, 200, 0.06) 30%,
+                rgba(160, 100, 220, 0.12) 35%,
+                rgba(200, 140, 255, 0.18) 40%,
+                rgba(160, 120, 240, 0.14) 45%,
+                rgba(100, 80, 180, 0.08) 50%,
+                transparent 56%),
+            radial-gradient(ellipse 25% 15% at 50% 50%,
+                rgba(255, 220, 150, 0.08) 0%,
+                rgba(200, 160, 255, 0.06) 40%,
+                transparent 70%);
+        animation: milkyWayRotate 60s linear infinite;
+    }
+
+    .galaxy-layer::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(ellipse 100% 40% at 50% 50%,
+                rgba(140, 100, 220, 0.07) 0%,
+                transparent 60%),
+            radial-gradient(ellipse 60% 80% at 30% 60%,
+                rgba(80, 120, 220, 0.05) 0%,
+                transparent 60%),
+            radial-gradient(ellipse 60% 80% at 70% 40%,
+                rgba(180, 80, 160, 0.05) 0%,
+                transparent 60%);
+        animation: nebulaPulse 20s ease-in-out infinite alternate;
+    }
+}
+
+@keyframes milkyWayRotate {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes nebulaPulse {
+    0%   { opacity: 0.6; }
+    50%  { opacity: 1; }
+    100% { opacity: 0.7; }
 }
 
 /* ============================================
@@ -202,6 +356,23 @@ body {
     overflow: hidden;
 }
 
+@media (min-width: 769px) {
+    .card-header::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -60%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(115deg, rgba(255,255,255,0) 10%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 90%);
+        transform: rotate(25deg);
+        transition: transform 0.6s ease;
+    }
+    .card-header:hover::after {
+        transform: rotate(25deg) translateX(100%);
+    }
+}
+
 .card-body {
     padding: 1.25rem;
 }
@@ -230,6 +401,27 @@ body {
     border: 1px solid rgba(255,255,255,0.3);
 }
 
+@media (min-width: 769px) {
+    .stat-card {
+        backdrop-filter: blur(5px);
+    }
+    .stat-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+    .stat-card:hover::before  { transform: scaleX(1); }
+    .stat-card:hover {
+        transform: translateY(-10px) rotateX(5deg);
+        box-shadow: var(--shadow-xl);
+        background: white;
+    }
+}
+
 .stat-card-primary { border-left: 4px solid var(--primary); }
 .stat-card-warning { border-left: 4px solid var(--warning); }
 .stat-card-success { border-left: 4px solid var(--success); }
@@ -250,6 +442,13 @@ body {
     transition: var(--transition);
 }
 
+@media (min-width: 769px) {
+    .stat-card:hover .stat-title {
+        letter-spacing: 0.1em;
+        color: var(--primary);
+    }
+}
+
 .stat-value {
     font-size: 1.5rem;
     font-weight: bold;
@@ -258,6 +457,16 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: var(--transition);
+}
+
+@media (min-width: 769px) {
+    .stat-card:hover .stat-value {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transform: scale(1.05);
+    }
 }
 
 @media (min-width: 768px)  { .stat-value { font-size: 1.75rem; } }
@@ -288,6 +497,21 @@ body {
     overflow: hidden;
     z-index: 1;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+@media (min-width: 769px) {
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 0; height: 0;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.4);
+        transform: translate(-50%, -50%);
+        transition: width 0.5s, height 0.5s;
+        z-index: -1;
+    }
+    .btn:active::before { width: 300%; height: 300%; }
 }
 
 .btn:hover  { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
@@ -345,6 +569,17 @@ body {
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 }
 
+@media (min-width: 769px) {
+    .progress-bar::after {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        animation: shimmer 2s infinite;
+    }
+}
+
 .progress-bar.bg-warning { background: linear-gradient(90deg, var(--warning), #dd6b20); }
 .progress-bar.bg-danger  { background: linear-gradient(90deg, var(--danger), #e53e3e); }
 
@@ -366,6 +601,12 @@ body {
 .table tbody tr:nth-child(3) { animation-delay: 0.15s; }
 .table tbody tr:nth-child(4) { animation-delay: 0.2s; }
 .table tbody tr:nth-child(5) { animation-delay: 0.25s; }
+
+.table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1));
+    transform: scale(1.01);
+    transition: var(--transition);
+}
 
 @media (max-width: 767px) {
     .table, .table thead, .table tbody, .table th, .table td, .table tr { display: block; }
@@ -420,6 +661,7 @@ body {
     }
 
     .table th { background: #f7fafc; font-weight: 600; }
+    .table td:hover { background: rgba(102,126,234,0.1); }
 }
 
 /* ============================================
@@ -441,6 +683,11 @@ body {
     animation-fill-mode: both;
 }
 
+.form-group:nth-child(1) { animation-delay: 0.05s; }
+.form-group:nth-child(2) { animation-delay: 0.1s; }
+.form-group:nth-child(3) { animation-delay: 0.15s; }
+.form-group:nth-child(4) { animation-delay: 0.2s; }
+
 .form-label {
     display: block;
     margin-bottom: 0.5rem;
@@ -459,6 +706,11 @@ body {
     border-radius: var(--radius);
     transition: var(--transition);
     background: white;
+}
+
+.form-control:hover, .form-select:hover {
+    border-color: var(--primary);
+    box-shadow: 0 2px 8px rgba(102,126,234,0.2);
 }
 
 .form-control:focus, .form-select:focus {
@@ -483,6 +735,12 @@ body {
     align-items: center;
     justify-content: space-between;
     animation: slideInRight 0.4s ease-out;
+}
+
+@media (min-width: 769px) {
+    .alert {
+        backdrop-filter: blur(5px);
+    }
 }
 
 .alert-warning {
@@ -516,7 +774,7 @@ body {
 .btn-close:hover { transform: scale(1.2); }
 
 /* ============================================
-   FILTROS Y LAYOUT
+   FILTROS Y LAYOUT DOS COLUMNAS
    ============================================ */
 .two-columns {
     display: grid;
@@ -540,6 +798,12 @@ body {
     border: 1px solid rgba(255,255,255,0.3);
 }
 
+@media (min-width: 769px) {
+    .filters-bar {
+        backdrop-filter: blur(5px);
+    }
+}
+
 @media (min-width: 640px) {
     .filters-bar { flex-direction: row; align-items: flex-end; flex-wrap: wrap; }
 }
@@ -549,6 +813,8 @@ body {
     min-width: 120px;
     transition: var(--transition);
 }
+
+.filter-group:hover { transform: translateY(-2px); }
 
 .filter-group label {
     display: block;
@@ -573,8 +839,21 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
+@media (min-width: 769px) {
+    .chart-container {
+        animation: glow 4s ease-in-out infinite;
+    }
+}
+
 canvas {
     transition: transform 0.3s ease;
+}
+
+@media (min-width: 769px) {
+    canvas {
+        filter: drop-shadow(0 10px 8px rgba(0,0,0,0.2));
+    }
+    canvas:hover { transform: scale(1.02); }
 }
 
 /* ============================================
@@ -587,6 +866,66 @@ canvas {
     font-size: 0.7rem;
     font-weight: 500;
     color: var(--dark);
+}
+
+/* ============================================
+   SCROLLBAR PERSONALIZADA 3D
+   ============================================ */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+}
+
+/* ============================================
+   ONDAS SVG DECORATIVAS (solo desktop)
+   ============================================ */
+@media (min-width: 769px) {
+    .waves-container {
+        position: fixed;
+        bottom: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    .wave {
+        position: absolute;
+        bottom: 0; left: 0;
+        width: 100%; height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(102,126,234,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') repeat-x;
+        background-size: cover;
+        opacity: 0.3;
+        animation: waveMove 20s linear infinite;
+    }
+
+    .wave:nth-child(2) {
+        opacity: 0.2;
+        animation: waveMove 15s linear infinite reverse;
+    }
+
+    @keyframes waveMove {
+        0%   { transform: translateX(0) translateY(0); }
+        100% { transform: translateX(-50%) translateY(-5%); }
+    }
+}
+
+/* Ocultar ondas y galaxy layer en móviles */
+@media (max-width: 768px) {
+    .waves-container, .galaxy-layer {
+        display: none;
+    }
 }
 
 /* ============================================
@@ -614,7 +953,7 @@ canvas {
 }
 
 /* ============================================
-   MEJORAS PARA CELULARES
+   MEJORAS PARA CELULARES - FORZAR VISIBILIDAD
    ============================================ */
 @media (max-width: 768px) {
     body { 
@@ -635,8 +974,8 @@ canvas {
         font-weight: bold !important;
         color: #2d3748 !important;
         background: none !important;
-        background-clip: unset !important; /* estándar */
-        -webkit-background-clip: unset !important; /* compatibilidad WebKit */
+        -webkit-background-clip: unset !important;
+        background-clip: unset !important;
         -webkit-text-fill-color: #2d3748 !important;
         display: block !important;
         text-align: center !important;
@@ -669,6 +1008,36 @@ canvas {
         padding: 12px 20px !important;
     }
     
+    .alert {
+        font-size: 14px !important;
+        padding: 12px !important;
+    }
+    
+    .form-label {
+        font-size: 14px !important;
+    }
+    
+    .form-control, .form-select {
+        font-size: 16px !important;
+        padding: 10px !important;
+    }
+    
+    .form-text {
+        font-size: 12px !important;
+    }
+    
+    .filter-group label {
+        font-size: 13px !important;
+    }
+    
+    .form-select {
+        font-size: 14px !important;
+    }
+    
+    .chart-container {
+        min-height: 320px !important;
+    }
+    
     .progress {
         margin: 15px 0 !important;
         height: 25px !important;
@@ -676,10 +1045,43 @@ canvas {
     
     .progress-bar {
         font-size: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
     
-    .galaxy-layer, .waves-container {
+    .card, .stat-card, .filters-bar, .alert {
+        backdrop-filter: none !important;
+        background: white !important;
+    }
+    
+    .card:hover, .stat-card:hover {
+        transform: none !important;
+        box-shadow: var(--shadow-sm) !important;
+    }
+    
+    .btn::before, .progress-bar::after, .card-header::after {
         display: none !important;
+    }
+    
+    .page-header h1, .chart-container {
+        animation: none !important;
+    }
+    
+    .stat-card:hover .stat-value {
+        transform: none !important;
+    }
+    
+    .stat-card::before {
+        display: none !important;
+    }
+    
+    canvas {
+        filter: none !important;
+    }
+    
+    html {
+        scroll-behavior: smooth;
     }
 }
 
@@ -694,6 +1096,10 @@ canvas {
         font-size: 1.5rem; 
     }
     
+    .page-header .lead { 
+        font-size: 0.9rem; 
+    }
+    
     .stat-value { 
         font-size: 24px !important; 
     }
@@ -705,5 +1111,35 @@ canvas {
     .btn { 
         font-size: 15px !important; 
         padding: 10px 16px !important; 
+    }
+    
+    .card-header { 
+        font-size: 1rem; 
+        padding: 12px 15px; 
+    }
+    
+    .card-body { 
+        padding: 15px; 
+    }
+    
+    .btn {
+        box-shadow: none !important;
+    }
+    
+    .card, .stat-card {
+        border: 1px solid rgba(0,0,0,0.05) !important;
+    }
+}
+
+/* ============================================
+   OPTIMIZACIÓN ADICIONAL
+   ============================================ */
+@media (max-width: 768px) {
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .table-responsive-wrapper {
+        -webkit-overflow-scrolling: touch;
     }
 }
