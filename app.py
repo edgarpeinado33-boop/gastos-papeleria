@@ -1,12 +1,15 @@
 from flask import Flask
 from controllers.gasto_controller import GastoController
 from dotenv import load_dotenv
+import os
 
 # Cargar variables de entorno
 load_dotenv()
 
-app = Flask(__name__, template_folder='views', static_folder='views/static')
-
+app = Flask(__name__,
+            template_folder='views',
+            static_folder='static',
+            static_url_path='/static')
 
 # Rutas
 @app.route('/')
