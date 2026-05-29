@@ -43,3 +43,17 @@ ON CONFLICT (nombre) DO NOTHING;
 INSERT INTO presupuesto (mes, anio, monto_limite) 
 VALUES (EXTRACT(MONTH FROM CURRENT_DATE), EXTRACT(YEAR FROM CURRENT_DATE), 1500.00)
 ON CONFLICT (mes, anio) DO NOTHING;
+-- 1. Configurar zona horaria para la sesión
+SET timezone = 'America/La_Paz';
+
+-- 2. Modificar la columna fecha para usar zona horaria Bolivia
+ALTER TABLE gastos 
+ALTER COLUMN fecha SET DEFAULT (CURRENT_DATE AT TIME ZONE 'America/La_Paz');
+
+-- 3. Modificar created_at
+ALTER TABLE gastos 
+ALTER COLUMN created_at SET DEFAULT (NOW() AT TIME ZONE 'America/La_Paz');
+
+-- 4. Verificar
+SHOW timezone;
+SELECT CURRENT_DATE AT TIME ZONE 'America/La_Paz' as fecha_bolivia;

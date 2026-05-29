@@ -1,18 +1,30 @@
 from config.supabase_client import get_db
-from datetime import date
+from datetime import datetime, timedelta
 
 class Gasto:
     """Modelo para gestionar gastos"""
     
     @staticmethod
+    def _obtener_fecha_bolivia():
+        """Obtener fecha actual en Bolivia (UTC-4)"""
+        # Bolivia está en UTC-4 (4 horas menos que UTC)
+        ahora_utc = datetime.utcnow()
+        ahora_bolivia = ahora_utc - timedelta(hours=4)
+        return ahora_bolivia.strftime('%Y-%m-%d')
+    
+    @staticmethod
     def crear(gasto_data: dict) -> dict:
-        """Crear un nuevo gasto en Supabase"""
+        """Crear un nuevo gasto en Supabase con fecha Bolivia"""
         db = get_db()
+        
+        # Usar fecha de Bolivia si no se especifica una
+        fecha_bolivia = Gasto._obtener_fecha_bolivia()
+        
         data = {
             'concepto': gasto_data['concepto'],
             'categoria': gasto_data['categoria'],
             'monto': float(gasto_data['monto']),
-            'fecha': gasto_data.get('fecha', str(date.today())),
+            'fecha': gasto_data.get('fecha', fecha_bolivia),
             'justificacion': gasto_data.get('justificacion', ''),
             'estado': 'aprobado'
         }
